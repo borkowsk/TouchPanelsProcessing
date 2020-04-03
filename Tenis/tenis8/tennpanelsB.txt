@@ -1,0 +1,74 @@
+  
+  courtB = new Panel(250*Xsc-2,170*Ysc,350*Xsc+2,320*Ysc); viAreas.add(courtB);
+ 
+  tmp=new WrUniqTextButton(courtB.list,"w1x",250*Xsc,170*Ysc,260*Xsc,190*Ysc,"w1x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w1",260*Xsc,170*Ysc,270*Xsc,190*Ysc,"w1",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w2",270*Xsc,170*Ysc,290*Xsc,190*Ysc,"w2",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w3",290*Xsc,170*Ysc,300*Xsc,190*Ysc,"w3",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q3",300*Xsc,170*Ysc,310*Xsc,190*Ysc,"q3",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q2",310*Xsc,170*Ysc,330*Xsc,190*Ysc,"q2",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q1",330*Xsc,170*Ysc,340*Xsc,190*Ysc,"q1",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q1x",340*Xsc,170*Ysc,350*Xsc,190*Ysc,"q1x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+ 
+  tmp=new WrUniqTextButton(courtB.list,"w4x",250*Xsc,190*Ysc,260*Xsc,210*Ysc,"w4x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w4",260*Xsc,190*Ysc,270*Xsc,210*Ysc,"w4",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w5",270*Xsc,190*Ysc,290*Xsc,210*Ysc,"w5",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w6",290*Xsc,190*Ysc,300*Xsc,210*Ysc,"w6",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q6",300*Xsc,190*Ysc,310*Xsc,210*Ysc,"q6",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q5",310*Xsc,190*Ysc,330*Xsc,210*Ysc,"q5",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q4",330*Xsc,190*Ysc,340*Xsc,210*Ysc,"q4",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q4x",340*Xsc,190*Ysc,350*Xsc,210*Ysc,"q4x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+   
+  tmp=new WrUniqTextButton(courtB.list,"w7x",250*Xsc,210*Ysc,260*Xsc,230*Ysc,"w7x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w7",260*Xsc,210*Ysc,270*Xsc,230*Ysc,"w7",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w8",270*Xsc,210*Ysc,290*Xsc,230*Ysc,"w8",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"w9",290*Xsc,210*Ysc,300*Xsc,230*Ysc,"w9",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q9",300*Xsc,210*Ysc,310*Xsc,230*Ysc,"q9",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q8",310*Xsc,210*Ysc,330*Xsc,230*Ysc,"q8",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q7",330*Xsc,210*Ysc,340*Xsc,230*Ysc,"q7",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"q7x",340*Xsc,210*Ysc,350*Xsc,230*Ysc,"q7x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp); 
+  
+  tmp=new WrUniqTextButton(courtB.list,"s1x",250*Xsc,230*Ysc,260*Xsc,250*Ysc,"s1x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s1",260*Xsc,230*Ysc,270*Xsc,250*Ysc,"s1",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s2",270*Xsc,230*Ysc,290*Xsc,250*Ysc,"s2",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s3",290*Xsc,230*Ysc,300*Xsc,250*Ysc,"s3",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a3",300*Xsc,230*Ysc,310*Xsc,250*Ysc,"a3",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a2",310*Xsc,230*Ysc,330*Xsc,250*Ysc,"a2",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a1",330*Xsc,230*Ysc,340*Xsc,250*Ysc,"a1",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a1x",340*Xsc,230*Ysc,350*Xsc,250*Ysc,"a1x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  
+  tmp=new WrUniqTextButton(courtB.list,"s4x",250*Xsc,250*Ysc,260*Xsc,270*Ysc,"s4x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s4",260*Xsc,250*Ysc,270*Xsc,270*Ysc,"s4",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s5",270*Xsc,250*Ysc,290*Xsc,270*Ysc,"s5",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s6",290*Xsc,250*Ysc,300*Xsc,270*Ysc,"s6",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a6",300*Xsc,250*Ysc,310*Xsc,270*Ysc,"a6",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a5",310*Xsc,250*Ysc,330*Xsc,270*Ysc,"a5",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a4",330*Xsc,250*Ysc,340*Xsc,270*Ysc,"a4",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a4x",340*Xsc,250*Ysc,350*Xsc,270*Ysc,"a4x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  
+  /* Obszar lini końcowej*/
+  
+  tmp=new WrUniqTextButton(courtB.list,"s7",260*Xsc,270*Ysc,270*Xsc,290*Ysc,"s7",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s8",270*Xsc,270*Ysc,290*Xsc,290*Ysc,"s8",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"s9",290*Xsc,270*Ysc,300*Xsc,290*Ysc,"s9",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a9",300*Xsc,270*Ysc,310*Xsc,290*Ysc,"a9",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a8",310*Xsc,270*Ysc,330*Xsc,290*Ysc,"a8",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a7",330*Xsc,270*Ysc,340*Xsc,290*Ysc,"a7",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
+ 
+  tmp=new WrUniqTextButton(courtB.list,"s7x",250*Xsc,270*Ysc,260*Xsc,310*Ysc,"s7x",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"z4",260*Xsc,290*Ysc,270*Xsc,310*Ysc,"z4",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"z3",270*Xsc,290*Ysc,280*Xsc,310*Ysc,"z3",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"z2",280*Xsc,290*Ysc,290*Xsc,310*Ysc,"z2",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"z1",290*Xsc,290*Ysc,300*Xsc,310*Ysc,"z1",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x1",300*Xsc,290*Ysc,310*Xsc,310*Ysc,"x1",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x2",310*Xsc,290*Ysc,320*Xsc,310*Ysc,"x2",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x3",320*Xsc,290*Ysc,330*Xsc,310*Ysc,"x3",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x4",330*Xsc,290*Ysc,340*Xsc,310*Ysc,"x4",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"a7x",340*Xsc,270*Ysc,350*Xsc,310*Ysc,"a7x",2); buttons.add(tmp); tmp.back=outL_color;tmp.strokW=1; courtB.add(tmp);
+  
+  tmp=new WrUniqTextButton(courtB.list,"z6",250*Xsc,310*Ysc,280*Xsc,320*Ysc,"z6",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"z5",280*Xsc,310*Ysc,300*Xsc,320*Ysc,"z5",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x5",300*Xsc,310*Ysc,320*Xsc,320*Ysc,"x5",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  tmp=new WrUniqTextButton(courtB.list,"x6",320*Xsc,310*Ysc,350*Xsc,320*Ysc,"x6",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
+  
+ 
