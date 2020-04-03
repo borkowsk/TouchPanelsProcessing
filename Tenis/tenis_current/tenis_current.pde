@@ -209,16 +209,16 @@ void draw() //Żeby działały zdarzenia myszy to musi być chociaż puste draw(
 {
 }
 
-boolean sketchFullScreen() //W ten sposób robi się tryb full screen jeszcze przed setupem
+/*boolean sketchFullScreen() //W ten sposób robi się tryb full screen jeszcze przed setupem
 {
   return true;
-}
+}*/
 
 void setup()
 {
   background(iniGrayBackground);
-  //size(iniWidth*3, iniHeight*2);
-  size(displayWidth, displayHeight);
+  size(iniWidth*3, iniHeight*2);
+  //size(displayWidth, displayHeight);
   Xsc=width/iniWidth;
   Ysc=height/iniHeight;
   iniTxSize*=Ysc; //Używane w inicjacjach bittonów
@@ -329,6 +329,7 @@ void setup()
   tmp=new WrUniqTextButton(court,"w1x",340*Xsc,120*Ysc,350*Xsc,140*Ysc,"w1x",1); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; court.add(tmp); 
   
   //Tu miejsce na siate
+  tmp=new TextButton("Net",250*Xsc,140*Ysc,350*Xsc,150*Ysc);buttons.add(tmp);tmp.strokW=1; //court.add(tmp); 
   
   tmp=new WrUniqTextButton(court,"w1x",250*Xsc,150*Ysc,260*Xsc,170*Ysc,"w1x",1); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; court.add(tmp);
   tmp=new WrUniqTextButton(court,"w1",260*Xsc,150*Ysc,270*Xsc,170*Ysc,"w1",1); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; court.add(tmp);
@@ -402,7 +403,7 @@ void setup()
   
   //Końcowe, na razie nieistotne
   tmp=new TextButton("TV placeholder",10*Xsc,10*Ysc,230*Xsc,140*Ysc); tmp.back=color(210,210,255);buttons.add(tmp);
-  tmp=new TextButton("Net-ERROR",300*Xsc,290*Ysc,350*Xsc,310*Ysc);tmp.state=1;buttons.add(tmp);
+  
   
   //Pierwsze wyświetlanie
   view_all();
