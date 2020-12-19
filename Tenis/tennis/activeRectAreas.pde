@@ -1,9 +1,13 @@
-int default_text_corner_radius=6;
+/// Moduł aktywnych obszarów
+/// Wojciech Borkowski @ wborkowski@uw.edu.pl
+///////////////////////////////////////////////////////////////
+int default_text_corner_radius=6;    //Domyslne zaaokrąglenie rogów przycisków
+
 ArrayList<RectArea>   viAreas = new ArrayList<RectArea>();   //Lista obszarów do wyświetlania
 ArrayList<TextButton> buttons = new ArrayList<TextButton>(); //Lista buttonów
 
-class RectArea 
-{
+class RectArea {
+/// Klasa bazowa dla wysztkich obszarów aktywnych
   int x1,y1,x2,y2;
   color back;
   
@@ -32,8 +36,8 @@ class RectArea
   }
 }
 
-class TextButton extends RectArea
-{
+class TextButton extends RectArea {
+/// Przycisk tekstowy
   color  txt,strok;
   int strokW;
   int txtSiz;
@@ -105,10 +109,13 @@ class TextButton extends RectArea
   
 }
 
-class StateLabel extends TextButton //Klasa pseudobuttonu która wyświetla stan a nie title, ignoruje flip_state() 
-{                                   //a zmiany stanu przez set_state ma zabezpieczone
+class StateLabel extends TextButton {   
+//Klasa pseudobuttonu, która wyświetla stan a nie title, ignoruje flip_state() 
+//a zmiany stanu przez set_state ma zabezpieczone
+
   private boolean allowChng;//Normalnie uzycie set_state() nic nie zmienia, trzeba ustawić to pole, które po zmnianie się kasuje
-                      //Więc tylko kod działający na obiektach tej klasy może to zrobić, akod działajacy na klasi ebazowej nie
+                            //Więc tylko kod działający na obiektach tej klasy może to zrobić, a kod działający na klasie bazowej nie
+                            
   StateLabel(int iState,String iTitle,float iX1,float iY1,float iX2,float iY2)
   {
     super(iTitle,iX1,iY1,iX2,iY2);
@@ -170,8 +177,9 @@ class StateLabel extends TextButton //Klasa pseudobuttonu która wyświetla stan
   }
 }
 
-class StateLabelInc extends TextButton //Klasa buttonu inkrementująca jakieś state label, ewentualnie cofająca działanie drugiej pary
-{
+class StateLabelInc extends TextButton {
+//Klasa buttonu inkrementująca jakieś state label, ewentualnie cofająca działanie drugiej pary
+
   StateLabel target;
   StateLabelInc opponent;
   
@@ -199,9 +207,11 @@ class StateLabelInc extends TextButton //Klasa buttonu inkrementująca jakieś s
    }
 }
 
-class UniqTextButton extends TextButton //Klasa buttonu którego kliknięcie zeruje stan wszystkich innych z listy
-{
+class UniqTextButton extends TextButton {
+//Klasa buttonu, którego kliknięcie zeruje stan wszystkich innych z listy
+
   ArrayList<TextButton> siblings; //Lista wykluczających się
+  
   UniqTextButton(ArrayList<TextButton> iSibl,String iTitle,float iX1,float iY1,float iX2,float iY2)
   {
     super(iTitle,iX1,iY1,iX2,iY2);
@@ -224,22 +234,26 @@ class UniqTextButton extends TextButton //Klasa buttonu którego kliknięcie zer
   }
 }
 
-class WrTextButton extends TextButton //Button pamiętający kolumnę do jakiej ma zapisać swój unikalny marker
-{   
+class WrTextButton extends TextButton {
+//Button pamiętający kolumnę do jakiej ma zapisać swój unikalny marker
+   
   int column;
   String marker; 
+  
   WrTextButton(String iTitle,float iX1,float iY1,float iX2,float iY2,String iMarker,int iColumn)
   {
     super(iTitle,iX1,iY1,iX2,iY2);
     marker=iMarker;
     column=iColumn;
   }
-}
+};
 
-class WrUniqTextButton extends UniqTextButton //UniqButton pamiętający kolumnę do jakiej ma zapisać swój unikalny marker
-{   
+class WrUniqTextButton extends UniqTextButton {
+//UniqButton pamiętający kolumnę do jakiej ma zapisać swój unikalny marker
+   
   int column;
   String marker; 
+  
   WrUniqTextButton(ArrayList<TextButton> iSibl,String iTitle,float iX1,float iY1,float iX2,float iY2,String iMarker,int iColumn)
   {
     super(iSibl,iTitle,iX1,iY1,iX2,iY2);
@@ -248,9 +262,11 @@ class WrUniqTextButton extends UniqTextButton //UniqButton pamiętający kolumn�
   }
 }
 
-class Panel extends RectArea
-{
+class Panel extends RectArea {
+/// Klasa obszaru w którym można osadzić inne obszary
+
   ArrayList<TextButton> list; 
+  
   Panel(float iX1,float iY1,float iX2,float iY2)
   {
     super(iX1,iY1,iX2,iY2);
@@ -275,12 +291,25 @@ class Panel extends RectArea
     but.y2+=y1; //Przy move() trzeba z powrotem odjąć a potem dodać nowe
   }
   
-}
+};
 
-void view_all()
+void view_all()/// Wyświetlenie wszystkich obszarów
 {
   for( RectArea area: viAreas)   //Lista obszarów do wyświetlania
   {
     area.view();
+  }
+}
+
+void mouseReleased() /// Reakcja na puszczenie przycisku myszy / odsunięcie palca z obszaru (?)
+{
+  //println("Released "+mouseX+" x "+mouseY);
+  for (TextButton button : buttons) 
+  {
+    if(button.hitted(mouseX,mouseY))
+    {
+      button.flip_state(true);
+      //println(button.title);
+    } 
   }
 }

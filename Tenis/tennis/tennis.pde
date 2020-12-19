@@ -2,6 +2,8 @@ static int iniWidth=370;
 static int iniHeight=330;
 static int iniGrayBackground=128;
 
+PImage photo;
+
 int iniTxSize=8;
 float Xsc=1.0;//Jeśli ekran jest mniejszy lub większy od domyślnego 360x320
 float Ysc=1.0;//To współrzędne "buttonów" trzeba przemnożyć 
@@ -9,16 +11,19 @@ PrintWriter output;             //Plik tekstowy zrobiony jako "tab delimited" ż
 
 void setup()
 {
+  //BAZOWY EKRAN MA   static int iniWidth=370;
+  //  370x330         static int iniHeight=330;
   //size(iniWidth*3, iniHeight*2);//Not in Processing 3.x
   size(1110,660);
   //OR
   //fullScreen();
+  
   background(iniGrayBackground);
   
   //Przygotowanie skalowania
   Xsc=width/iniWidth;
   Ysc=height/iniHeight;
-  iniTxSize*=Ysc; //Używane w inicjacjach bittonów
+  iniTxSize*=Ysc; //Używane w inicjacjach buttonów
    
   //Nazwy kolumn zbiorczych umieszczane przed binarnymi
   columnNames.add("Players");//0
@@ -31,10 +36,9 @@ void setup()
   
   columnValues = new String[columnNames.size()]; //Lista i tablica muszą być równej długości
     
-  //BAZOWY EKRAN MA   static int iniWidth=370;
-  //  370x330         static int iniHeight=330;
   //Musi być zaraz za kolumnami zbiorczymi, więc pierwsza na liście przycisków
   others = new Panel(105*Xsc,150*Ysc,220*Xsc,180*Ysc); others.back=color(100,100,100); viAreas.add(others);
+  
   TextButton tmp=new TextButton("Net",15*Xsc,10*Ysc,115*Xsc,20*Ysc);buttons.add(tmp);others.add(tmp);tmp.strokW=1;tmp.corner=0; //courtT.add(tmp); 
   //wymiany
   tmp=Exch=new StateLabel(0,"exchange",2*Xsc,4*Ysc,13*Xsc,23*Ysc); buttons.add(tmp);others.add(tmp);
@@ -66,16 +70,20 @@ void setup()
   tmp=incPktA=new StateLabelInc("p(A)",0*Xsc,0*Ysc,40*Xsc,20*Ysc,PktA,null); buttons.add(tmp); points.add(tmp);
   tmp=incPktB=new StateLabelInc("p(B)",90*Xsc,0*Ysc,130*Xsc,20*Ysc,PktB,null); buttons.add(tmp); points.add(tmp);
   tmp=incGemA=new StateLabelInc("g(A)",0*Xsc,30*Ysc,40*Xsc,50*Ysc,GemA,null){ public void flip_state(boolean visual){ //Nakładka metody 
-                  super.flip_state(visual);PktA.allow();PktB.allow();
+                    super.flip_state(visual);
+                    PktA.allow();PktB.allow();
                   }}; buttons.add(tmp); points.add(tmp);
   tmp=incGemB=new StateLabelInc("g(B)",90*Xsc,30*Ysc,130*Xsc,50*Ysc,GemB,null){ public void flip_state(boolean visual){ //Nakładka metody 
-                  super.flip_state(visual);PktA.allow();PktB.allow();
+                    super.flip_state(visual);
+                    PktA.allow();PktB.allow();
                   }}; buttons.add(tmp);  points.add(tmp);
   tmp=incSetA=new StateLabelInc("s(A)",0*Xsc,60*Ysc,40*Xsc,80*Ysc,SetA,null){ public void flip_state(boolean visual){ //Nakładka metody 
-                  super.flip_state(visual);PktA.allow();PktB.allow();GemA.allow();GemB.allow();
+                    super.flip_state(visual);
+                    PktA.allow();PktB.allow();GemA.allow();GemB.allow();
                   }}; buttons.add(tmp); points.add(tmp);
   tmp=incSetB=new StateLabelInc("s(B)",90*Xsc,60*Ysc,130*Xsc,80*Ysc,SetB,null){ public void flip_state(boolean visual){ //Nakładka metody 
-                  super.flip_state(visual);PktA.allow();PktB.allow();GemA.allow();GemB.allow();
+                    super.flip_state(visual);
+                    PktA.allow();PktB.allow();GemA.allow();GemB.allow();
                   }}; buttons.add(tmp); points.add(tmp);   
   incPktA.opponent=incPktB;
   incPktB.opponent=incPktA;
@@ -87,13 +95,14 @@ void setup()
   //Pierwsza kolumna przycisków
   serves=new Panel(10*Xsc,160*Ysc,100*Xsc,240*Ysc);  viAreas.add(serves);
   tmp=new WrUniqTextButton(serves.list,"servis",0*Xsc,0*Ysc,40*Xsc,20*Ysc,"srv",3){ public void flip_state(boolean visual){ //Nakładka metody 
-                  super.flip_state(visual);Exch.allow();Exch.set_state(0,true); 
-  }}; buttons.add(tmp);serves.add(tmp);
-  tmp=new WrUniqTextButton(serves.list,"smecz",50*Xsc,0*Ysc,90*Xsc,20*Ysc,"sme",3); buttons.add(tmp);serves.add(tmp);
-  tmp=new WrUniqTextButton(serves.list,"FH",0*Xsc,30*Ysc,40*Xsc,50*Ysc,"FH",3); buttons.add(tmp);serves.add(tmp);
-  tmp=new WrUniqTextButton(serves.list,"BH",50*Xsc,30*Ysc,90*Xsc,50*Ysc,"BH",3); buttons.add(tmp);serves.add(tmp);
-  tmp=new WrUniqTextButton(serves.list,"W-FH",0*Xsc,60*Ysc,40*Xsc,80*Ysc,"W-FH",3); buttons.add(tmp);serves.add(tmp);
-  tmp=new WrUniqTextButton(serves.list,"W-BH",50*Xsc,60*Ysc,90*Xsc,80*Ysc,"W-BH",3); buttons.add(tmp);serves.add(tmp);  
+                  super.flip_state(visual);
+                  Exch.allow();Exch.set_state(0,true); 
+              }}; buttons.add(tmp);serves.add(tmp);
+  tmp=new WrUniqTextButton(serves.list,"smecz",50*Xsc,0*Ysc,90*Xsc,20*Ysc, "sme", 3); buttons.add(tmp);serves.add(tmp);
+  tmp=new WrUniqTextButton(serves.list,"FH",0*Xsc,30*Ysc,40*Xsc,50*Ysc,    "FH",  3); buttons.add(tmp);serves.add(tmp);
+  tmp=new WrUniqTextButton(serves.list,"BH",50*Xsc,30*Ysc,90*Xsc,50*Ysc,   "BH",  3); buttons.add(tmp);serves.add(tmp);
+  tmp=new WrUniqTextButton(serves.list,"W-FH",0*Xsc,60*Ysc,40*Xsc,80*Ysc,  "W-FH",3); buttons.add(tmp);serves.add(tmp);
+  tmp=new WrUniqTextButton(serves.list,"W-BH",50*Xsc,60*Ysc,90*Xsc,80*Ysc, "W-BH",3); buttons.add(tmp);serves.add(tmp);  
   
   //Zawodnicy
   color playerA_backg=color(0,200,0);
@@ -101,10 +110,10 @@ void setup()
   color playerB_backg=color(0,150,0);
   color playerB_color=color(200,200,0);
   players = new Panel(10*Xsc,55*Ysc,100*Xsc,105*Ysc); viAreas.add(players);
-  tmp=new WrUniqTextButton(players.list,"player A",0*Xsc,0*Ysc,40*Xsc,20*Ysc,"A",0); buttons.add(tmp); tmp.txt=playerA_backg; tmp.back=playerA_color;tmp.strokW=1; players.add(tmp);
-  tmp=new WrUniqTextButton(players.list,"player B",0*Xsc,30*Ysc,40*Xsc,50*Ysc,"B",0); buttons.add(tmp); tmp.txt=playerB_backg; tmp.back=playerB_color;tmp.strokW=1; players.add(tmp);
-  tmp=new WrUniqTextButton(players.list,"player A2",50*Xsc,0*Ysc,90*Xsc,20*Ysc,"A2",0); buttons.add(tmp);tmp.txt=playerA_backg; tmp.back=playerA_color;tmp.strokW=1; players.add(tmp);
-  tmp=new WrUniqTextButton(players.list,"player B2",50*Xsc,30*Ysc,90*Xsc,50*Ysc,"B2",0); buttons.add(tmp);tmp.txt=playerB_backg; tmp.back=playerB_color;tmp.strokW=1; players.add(tmp);
+  tmp=new WrUniqTextButton(players.list,"player A",0*Xsc,0*Ysc,40*Xsc,20*Ysc,  "A", 0); buttons.add(tmp); tmp.txt=playerA_backg; tmp.back=playerA_color;tmp.strokW=1; players.add(tmp);
+  tmp=new WrUniqTextButton(players.list,"player B",0*Xsc,30*Ysc,40*Xsc,50*Ysc, "B", 0); buttons.add(tmp); tmp.txt=playerB_backg; tmp.back=playerB_color;tmp.strokW=1; players.add(tmp);
+  tmp=new WrUniqTextButton(players.list,"player A2",50*Xsc,0*Ysc,90*Xsc,20*Ysc,"A2",0); buttons.add(tmp); tmp.txt=playerA_backg; tmp.back=playerA_color;tmp.strokW=1; players.add(tmp);
+  tmp=new WrUniqTextButton(players.list,"player B2",50*Xsc,30*Ysc,90*Xsc,50*Ysc,"B2",0);buttons.add(tmp); tmp.txt=playerB_backg; tmp.back=playerB_color;tmp.strokW=1; players.add(tmp);
   
   //Boisko
   color out_color=color(250,150,150);
@@ -148,7 +157,6 @@ void setup()
   tmp=new WrUniqTextButton(courtT.list,"s4",80*Xsc,50*Ysc,90*Xsc,70*Ysc,"s4",1); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtT.add(tmp);
   tmp=new WrUniqTextButton(courtT.list,"s4x",90*Xsc,50*Ysc,100*Xsc,70*Ysc,"s4x",1); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtT.add(tmp);  
  
-   
   tmp=new WrUniqTextButton(courtT.list,"a1x",0*Xsc,70*Ysc,10*Xsc,90*Ysc,"a1x",1); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtT.add(tmp);
   tmp=new WrUniqTextButton(courtT.list,"a1",10*Xsc,70*Ysc,20*Xsc,90*Ysc,"a1",1); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtT.add(tmp);
   tmp=new WrUniqTextButton(courtT.list,"a2",20*Xsc,70*Ysc,40*Xsc,90*Ysc,"a2",1); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtT.add(tmp);
@@ -235,7 +243,7 @@ void setup()
   tmp=new WrUniqTextButton(courtB.list,"a4",80*Xsc,80*Ysc,90*Xsc,100*Ysc,"a4",2); buttons.add(tmp); tmp.back=in_color;tmp.strokW=1; courtB.add(tmp);
   tmp=new WrUniqTextButton(courtB.list,"a4x",90*Xsc,80*Ysc,100*Xsc,100*Ysc,"a4x",2); buttons.add(tmp); tmp.back=out_color;tmp.strokW=1; courtB.add(tmp);
   
-  /* Obszar lini koĹ„cowej*/
+  /* Obszar lini końcowej*/
   
   tmp=new WrUniqTextButton(courtB.list,"s7",10*Xsc,100*Ysc,20*Xsc,120*Ysc,"s7",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
   tmp=new WrUniqTextButton(courtB.list,"s8",20*Xsc,100*Ysc,40*Xsc,120*Ysc,"s8",2); buttons.add(tmp); tmp.back=inL_color;tmp.strokW=1; courtB.add(tmp);
@@ -264,21 +272,21 @@ void setup()
   //Końcowe  
   validation("hello.txt");
  
-  /* 
+   
   //tmp=new TextButton("TV placeholder",10*Xsc,10*Ysc,210*Xsc,140*Ysc); tmp.back=color(210,210,255);buttons.add(tmp); //na razie nieistotne
-  tmp=new TextButton(" TV ",0,0,10*Xsc,10*Ysc); tmp.back=color(210,210,255);tmp.strokW=0;buttons.add(tmp); //na razie nieistotne
+  //tmp=new TextButton(" TV ",0,0,10*Xsc,10*Ysc); tmp.back=color(210,210,255);tmp.strokW=0; buttons.add(tmp); //na razie nieistotne
+  
   tint(255, 50);  // Apply transparency without changing color
- 
-  photo = loadImage("Puchar.jpg");
+  photo = loadImage("jpg/Puchar.jpg");
   if(photo == null || photo.width<=0 || photo.height<=0 )
         {
           println("Wadliwa grafika");
           exit();
         }
   imageMode(CORNERS);
-  image(photo, 10*Xsc,10*Ysc,210*Xsc,140*Ysc);  // Draw image using CORNERS mode. Niestety zaokraglenie rogów nie jest proste
-  viAreas.add( new RectArea(10*Xsc,10*Ysc,210*Xsc,140*Ysc) );
-  */
+  image(photo, 5*Xsc,5*Ysc,width-5*Xsc,height-5*Ysc);  // Draw image using CORNERS mode. Niestety zaokraglenie rogów nie jest proste
+  
+  //viAreas.add( new RectArea(10*Xsc,10*Ysc,20*Xsc,20*Ysc) );
   
   tmp=( new TextButton("quit",150*Xsc,330*Ysc,200*Xsc,350*Ysc) {
              public void flip_state(boolean visual){exit();} //Nakładka metody robiąca wyjście z programu             
@@ -340,6 +348,27 @@ void validation(String name) //Sprawdzenie czy data ważności nie jest przekroc
     
 }
 
+void FillColumnValues()//Osobna procedura do wypełniania kolumn specjalnych
+{
+   for (TextButton button : buttons) 
+   if(button.state!=0)
+   {
+     try{
+     WrUniqTextButton tmp=(WrUniqTextButton)button;
+     columnValues[tmp.column]=tmp.marker;
+     }catch(Exception e)
+     {/*Ignore*/}
+     try{
+     WrTextButton tmp=(WrTextButton)button;
+     columnValues[tmp.column]=tmp.marker;
+     }catch(Exception e)
+     {/*Ignore*/}
+   }
+   //PktA,PktB,GemA,GemB,SetA,SetB;
+   columnValues[4]=PktA.state+PktB.state+"";
+   columnValues[5]=GemA.state+GemB.state+"";
+   columnValues[6]=SetA.state+SetB.state+"";
+}
 
 /* TESTY
  int x1,y1,x2,y2;
